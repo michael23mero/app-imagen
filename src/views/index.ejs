@@ -1,0 +1,32 @@
+<title>Inicio</title>
+<%- include("layout") %>
+<div class="container mt-5 py-5">
+    <h4 class="text-center py-4">Galeria de Imagen</h4><hr>
+    <div class="row">
+        <div class="col-12 mt-4">
+            <div class="card-columns">
+                <% images.forEach(function (image) { %>
+                    <a href="/image/<%= image._id %>">
+                        <div class="card animated fadeInDown">
+                            <img src="<%= image.path %>" class="card-img-top zoom" alt="<%= image.filename %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= image.titulo %></h5>
+                                <p class="card-text"><%= image.description %></p>
+                                <p><%= format(image.created_at) %></p>
+                            </div>
+                        </div>
+                    </a>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .zoom{
+        transition: 0.5s;
+    }
+    .zoom:hover{
+        transform: scale(1.1);
+    }
+</style>
